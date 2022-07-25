@@ -1,7 +1,14 @@
 import express, { response } from 'express';
+
 const app = express();
+
 app.use(express.json());
 
+app.post('/students', (request, response) => {
+    const newStudent = request.body;
+    students.push(newStudent)
+    response.status(201).send(students)
+})
 //list requests that we want express 
 app.get('/hello', (request, response) => {
     //do something ...
