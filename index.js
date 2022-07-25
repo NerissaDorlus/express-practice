@@ -19,7 +19,16 @@ const students = [
 app.get('/students', (request, response) => {
     response.send(students)
 });
+
 app.get('/students/:firstname', (request, response) => {
+    //this will return only the student whose name you are looking for
+    const student = students.find(stud.firstName === request.params.fname)
+    if(!student){
+        response.status(404).send({message:'student not found', sucess: false})
+        return
+    }
+
+    response.send(student)
 });
 
 
